@@ -197,6 +197,13 @@ namespace Scad {
 			return nodes;
 		}
 
+		public addModule(module: Module): Scad.Node {
+			const mod = this.defineModule(module.name)()
+			const node = mod(module.entries)
+			this.entries.push(node)
+			return node;
+		}
+
 		public toString(): string {
 			let variableText = "";
 			const sections: Record<string, Scad.Variable<any>[]> = {};
